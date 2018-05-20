@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Hansi Says Game</title>
+    <link href="style.css" rel="stylesheet">
+
+    <link rel="icon" href="logo.png" type="image/png">
+
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/howler.js"></script>
+    <script src="js/hansisays.js"></script>
+
+</head>
+<body>
+
+<h1>Hansi Says</h1>
+
+<div id="colorswrapper">
+    <div class="colorbutton" id="green"></div>
+    <div class="colorbutton" id="red"></div>
+    <div class="colorbutton" id="blue"></div>
+    <div class="colorbutton" id="yellow"></div>
+</div>
+
+<div id="test">TEST<br>
+</div>
+
+<div id="menu">
+    <button onclick="newGame()" id="newGameButton">Neues Spiel</button>
+    <br>
+    <button id="proceedButton">Weiter</button>
+    <h3>Punktzahl: <span id="score">0</span></h3>
+    <h4>Highscore: <span id="highscore">0</span></h4>
+</div>
+
+</body>
+</html>
