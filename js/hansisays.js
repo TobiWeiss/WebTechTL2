@@ -2,6 +2,7 @@ var greenSound, redSound, blueSound, yellowSound, errorSound;
 
 var score = 0;
 var highscore = 0;
+var playerGame = [];
 
 $(document).ready(function () {
 
@@ -70,6 +71,7 @@ function printArray() {
         setTimeout(printArray, 3000);
     } else {
         counter = 0;
+        console.log("nicht möglich")
     }
 }
 
@@ -104,9 +106,29 @@ function request() {
 
 
 
-
+function playerInput(input) {
+    playerGame.push(input);
+    console.log(input)
+    compareInput();
+}
+function clearPlayer() {
+    playerGame = [];
+}
+function compareInput() {
+    if(playerGame[playerGame.length - 1] !== parsed.sequence[playerGame.length-1]){
+        alert("Schade, falsche Eingabe");
+        playerGame = [];
+    } else {
+      if(playerGame.length == parsed.sequence.length){
+          alert("Sehr gut!");
+          clearPlayer();
+          newGame();
+      }
+    }
+}
 
 function newGame() {
     request();
-    printArray();
+    setTimeout(printArray, 3000);
+
 }
