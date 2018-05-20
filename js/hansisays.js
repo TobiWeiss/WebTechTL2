@@ -78,7 +78,7 @@ function printArray() {
 
 
 
-function request(input) {
+function request() {
     var xmlhttp = false;
     try {
         if (window.XMLHttpRequest) {
@@ -90,17 +90,6 @@ function request(input) {
     catch (e) {
         alert("cannot create object");
     }
-    if(input.length = 0) {
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                parsed = JSON.parse(xmlhttp.responseText);
-                console.log(parsed);
-
-            }
-        };
-        xmlhttp.open("GET", "php/nextColor.php?sequence=" + JSON.stringify(input), true);
-        xmlhttp.send();
-    } else {
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 parsed = JSON.parse(xmlhttp.responseText);
@@ -111,15 +100,13 @@ function request(input) {
         xmlhttp.open("GET", "php/nextColor.php?sequence=" + JSON.stringify(parsed.sequence), true);
         xmlhttp.send();
     }
-}
+
 
 
 
 
 
 function newGame() {
-    var start = [];
-    request(start);
-    printArray();
+    request();
     printArray();
 }
