@@ -108,7 +108,7 @@ function request(input) {
 
             }
         };
-        xmlhttp.open("GET", "php/nextColor.php?sequence=" + input, true);
+        xmlhttp.open("GET", "php/nextColor.php?sequence=" + JSON.stringify(parsed.sequence), true);
         xmlhttp.send();
     }
 }
@@ -121,7 +121,5 @@ function newGame() {
     var start = [];
     request(start);
     printArray();
-    var jsonArray = JSON.stringify(parsed.sequence);
-    request(jsonArray);
     printArray();
 }
