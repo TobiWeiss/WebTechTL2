@@ -49,9 +49,9 @@ div.colorbutton.pressed {
     filter: brightness(60%);
 }
 
+
 div#green {
-    background-color: #27ae60;
-    border-top-left-radius: 75%;
+    background-color: #27ae60;border-top-left-radius: 75%;
 }
 
 div#red {

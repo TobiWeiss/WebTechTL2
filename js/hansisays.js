@@ -62,13 +62,21 @@ function playSound(input) {
 }
 
 
+function showSequence(input) {
+  $('#'+input).removeClass('pressed');
+  setTimeout(function() {
+      $('#' + input).addClass('pressed')
+  }, 300)
+}
+
 var counter = 0;
 function printArray() {
     if(counter < parsed.sequence.length) {
         var tempSound = parsed.sequence[counter];
         playSound(tempSound);
+        showSequence(tempSound);
         counter++;
-        setTimeout(printArray, 3000);
+        setTimeout(printArray, 2000);
     } else {
         counter = 0;
         console.log("nicht möglich")
@@ -126,6 +134,7 @@ function compareInput() {
       }
     }
 }
+
 
 function newGame() {
     request();
