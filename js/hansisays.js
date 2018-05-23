@@ -23,6 +23,7 @@ $(document).ready(function () {
   blockButtons() disables inputs from the user
   printArray() displays the sequence of colors (setTimeout necessary to ensure functionality)*/
 function newGame() {
+    $('.colorbutton').removeClass('pressed');
     parsed.sequence = [];
     score = 0;
     document.getElementById("score").innerHTML = score.toString();
@@ -128,9 +129,9 @@ function freeButtons() {
 /*Function to visually display color according to input
  */
 function showSequence(input) {
-    $('#' + input).removeClass('pressed');
+    $('#' + input).addClass('pressed');
     setTimeout(function () {
-        $('#' + input).addClass('pressed')
+        $('#' + input).removeClass('pressed')
     }, 300)
 }
 
@@ -151,7 +152,7 @@ function printArray() {
     } else {
         counter = 0;
         freeButtons();
-        console.log("nicht möglich")
+        console.log("Sequenz abgespielt")
     }
 }
 
@@ -182,9 +183,11 @@ function request() {
 
 /*Function to collect pressed colors and to compare pressed colors to the relevant part of the sequence requested from nextColor.php */
 function playerInput(input) {
+    playSound(input);
+    showSequence(input);
     playerGame.push(input);
     console.log(input)
-    compareInput();
+    setTimeout(compareInput, 200);
 }
 
 /*Function to empty Array containing user inputs*/
@@ -201,7 +204,9 @@ function clearPlayer() {
 function compareInput() {
     if (playerGame[playerGame.length - 1] !== parsed.sequence[playerGame.length - 1]) {
         alert("Schade, falsche Eingabe");
+        errorSound.play();
         blockColors();
+        $('.colorbutton').addClass('pressed');
         playerGame = [];
         parsed.sequence = [];
     } else {
